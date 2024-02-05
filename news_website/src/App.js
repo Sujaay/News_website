@@ -5,20 +5,20 @@ import './App.css';
 const articles = [
   {
     title: "Breaking News",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus fermentum metus, ut sollicitudin urna efficitur vel.",
-    image: "https://via.placeholder.com/150",
+    content: "CM Champai Soren wins trust vote with 47 MLAs in support",
+    image: "bumrah.webp",
     link: "#"
   },
   {
     title: "Latest Technology",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus fermentum metus, ut sollicitudin urna efficitur vel.",
-    image: "https://via.placeholder.com/150",
+    content: "Google may soon rebrand its AI chatbot Bard as Gemini",
+    image: "Champai-Soren-1.jpg",
     link: "#"
   },
   {
     title: "Sports Update",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus fermentum metus, ut sollicitudin urna efficitur vel.",
-    image: "https://via.placeholder.com/150",
+    content: "Bumrah, Ashwin Help India Level Series With Win Over England In 2nd Test",
+    image: "googlelogo.jpg",
     link: "#"
   }
 ];
