@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes
+// import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Category from './pages/Category'; // Make sure this import is correct
@@ -10,14 +10,14 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <div className="container">
-          <Sidebar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/category/:categoryName" component={Category} />
-            <Route component={NotFound} />
-          </Switch>
+          <Sidebar/>
+          <Routes> {/* Use Routes instead of Switch */}
+            <Route path="/" element={<Home />} />
+            <Route path="/category/:categoryName" element={<Category />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       </div>
     </Router>
