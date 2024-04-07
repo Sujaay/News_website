@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Im
 // import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
-import Category from './pages/Category'; // Make sure this import is correct
+// import Category from './pages/Category'; // Make sure this import is correct
 import NotFound from './pages/NotFound'; // Make sure this import is correct
+import SportsPage from './pages/Sports';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
           <Sidebar/>
           <Routes> {/* Use Routes instead of Switch */}
             <Route path="/" element={<Home />} />
-            <Route path="/category/:categoryName" element={<Category />} />
+            <Route path="/sports" element={<SportsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
