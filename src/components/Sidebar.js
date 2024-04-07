@@ -9,7 +9,7 @@ const Sidebar = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/category/business">Business</Link></li>
           <li><Link to="/category/technology">Technology</Link></li>
-          <li><Link to="/category/sports">Sports</Link></li>
+          <li><Link to="/sports">Sports</Link></li>
           {/* Add more category links as needed */}
         </ul>
       </nav>

@@ -1,12 +1,11 @@
-// utils/api.js
-
 const API_KEY = '521745b0161142c59f91e7e334cdcc04'; //API key of newsapi.org, user: sujaykumar 
 const API_URL = 'https://newsapi.org/v2/top-headlines';
-const DEFAULT_COUNTRY = 'us';
+const DEFAULT_COUNTRY = 'in';
+const CATEGORY="sports"
 
-export const getNews = async () => {
+export const getSportsNews = async () => {
   try {
-    const response = await fetch(`${API_URL}?country=${DEFAULT_COUNTRY}&apiKey=${API_KEY}`);
+    const response = await fetch(`${API_URL}?category=${CATEGORY}&country=${DEFAULT_COUNTRY}&apiKey=${API_KEY}`);
     const data = await response.json();
     if (data.status === 'ok') {
       return data.articles;
