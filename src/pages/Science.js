@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getTrendingScienceNews } from '../utils/Science/trendingScienceapi';
 import { getScienceNews } from '../utils/Science/ScienceNewsapi';
 import './Science.css'; // Assuming you have a CSS file for styling
+import Navbar from '../components/Navbar';
 
 function SciencePage() {
   const [scienceNews, setScienceNews] = useState([]);
@@ -66,6 +67,7 @@ function SciencePage() {
 
   return (
     <div className="science-page">
+      <Navbar/>
     <header>
       <h1 >SCIENCE NEWS</h1>
       <nav>

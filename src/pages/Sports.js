@@ -5,6 +5,7 @@ import { getSportsNews } from '../utils/Sports/SportsNewsapi';
 import './Sports.css';
 import { getTrendingSportsNews } from '../utils/Sports/trendingSportsapi';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 
 function SportsPage() {
   const [sportsNews, setSportsNews] = useState([]);
@@ -77,6 +78,7 @@ function SportsPage() {
 
   return (
     <div className="sports-page">
+      <Navbar/>
       <header>
         <h1 >SPORTS NEWS</h1>
         <nav>

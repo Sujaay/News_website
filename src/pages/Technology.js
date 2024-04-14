@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getTechNews } from '../utils/Tech/TechNewsapi';
 import { getTrendingTechNews } from '../utils/Tech/trendingTechapi';
 import './Technology.css';
+import Navbar from './../components/Navbar';
 
 function TechnologyPage() {
   const [techNews, setTechNews] = useState([]);
@@ -67,6 +68,7 @@ function TechnologyPage() {
 
   return (
     <div className="technology-page">
+      <Navbar/>
       <header>
         <h1 >TECHNOLOGY NEWS</h1>
         <nav>

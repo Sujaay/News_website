@@ -1,7 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import './Navbar.css';
+import React, { useEffect } from 'react';
+import './Navbar.css'; // Import your CSS file
 
+import { Link } from 'react-router-dom';
 const navLinks = [
   { to: '/', text: 'Home' },
   { to: '/business', text: 'Business' },
@@ -35,3 +38,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+  
+  
+ 
+
+
+

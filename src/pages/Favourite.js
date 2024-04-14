@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Favourite.css';
+import Navbar from '../components/Navbar';
 
 function SavedArticlesPage() {
   const [savedArticles, setSavedArticles] = useState([]);
@@ -42,6 +43,7 @@ function SavedArticlesPage() {
   
   return (
     <div className='Saved-news'>
+      <Navbar/>
       <h1>Saved Articles</h1>
       <div className='container'>
         {savedArticles.map((article) => (

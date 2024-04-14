@@ -16,7 +16,9 @@ app.use(bodyParser.json());
 app.use('/api/articles', articleRoutes);
 
 // Connect to MongoDB
-const MONGODB_URI = 'mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'; // Change this to your MongoDB connection string
+
+// const MONGODB_URI = 'mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'; // Change this to your MongoDB connection string
+const MONGODB_URI='mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
