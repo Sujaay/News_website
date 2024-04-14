@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const articleRoutes = require('./routes/articles');
+const authRoutes = require('./routes/auth'); // Import auth routes
 
 const app = express();
 
@@ -14,9 +15,10 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/api/articles', articleRoutes);
+app.use('/api/auth', authRoutes); // Use auth routes
 
 // Connect to MongoDB
-const MONGODB_URI = 'mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'; // Change this to your MongoDB connection string
+const MONGODB_URI = 'mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/news_db'; // Change this to your MongoDB connection string, including database name
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -29,4 +31,3 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
   .catch(error => {
     console.error('MongoDB connection failed:', error);
   });
-

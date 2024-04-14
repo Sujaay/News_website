@@ -1,33 +1,53 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 
-
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
-  const [confirmPassword, setConfirmPassword] = useState(''); // New state for confirmation
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = async (e) => { // Made async for potential API calls
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isLogin) {
       // Handle login logic here (e.g., call an API to authenticate)
       console.log('Login with email:', email, 'password:', password);
+      // Implement login logic using your backend API (not shown here)
     } else {
       // Handle registration logic here (e.g., call an API to create user)
       if (password !== confirmPassword) {
-        alert('Passwords do not match!'); // Simple error handling
-        return; // Prevent further processing if passwords don't match
+        alert('Passwords do not match!');
+        return;
       }
-      console.log('Register with email:', email, 'password:', password);
+
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          console.log('Registration successful!');
+          // Handle successful registration (e.g., redirect to login page)
+        } else {
+          console.error('Registration failed:', data.error);
+          // Handle registration error (e.g., display error message)
+        }
+      } catch (error) {
+        console.error('Error registering user:', error);
+        // Handle network or other errors
+      }
     }
 
     // Reset form fields after submission (optional)
-    // setEmail('');
-    // setPassword('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
   };
-  
+
   const handleContinueReading = () => {
     // Redirect to the homepage
     window.location.href = '/home'; // Assuming your homepage URL is '/'
@@ -57,20 +77,18 @@ const LoginPage = () => {
             required
           />
         </div>
-        { // Add confirmation field only during registration
-          !isLogin && (
-            <div className="form-group">
-              <label>Confirm Password:</label>
-              <input
-                type="password"
-                className="form-control"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.preventDefault(e.target.value))}
-                required
-              />
-            </div>
-          )
-        }
+        {!isLogin && (
+          <div className="form-group">
+            <label>Confirm Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+        )}
         <button type="submit" className="btn btn-primary">
           {isLogin ? 'Login' : 'Register'}
         </button>
