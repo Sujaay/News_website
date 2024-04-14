@@ -1,22 +1,15 @@
-// backend/routes/auth.js
-
 const express = require('express');
 const router = express.Router();
 const User = require('../models/Viewer');
 
 // Route to handle user login
 router.post('/login', async (req, res) => {
-  console.log('Received a POST request to /api/auth/login');
-  console.log('Request body:', req.body);
   try {
     const { email, password } = req.body;
-    // Ensure that email and password are included in the request body
     if (!email || !password) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    console.log('Extracted fields:', { email, password });
-    // Find the user by email and password in your database
     const user = await User.findOne({ email, password });
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
@@ -31,23 +24,17 @@ router.post('/login', async (req, res) => {
 
 // Route to handle user registration
 router.post('/register', async (req, res) => {
-  console.log('Received a POST request to /api/auth/register');
-  console.log('Request body:', req.body);
   try {
     const { email, password } = req.body;
-    // Ensure that email and password are included in the request body
     if (!email || !password) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    console.log('Extracted fields:', { email, password });
-    // Check if the user already exists in the database
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({ message: 'User already exists' });
     }
 
-    // Create a new user in the database
     const newUser = new User({ email, password });
     await newUser.save();
  
@@ -57,5 +44,38 @@ router.post('/register', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+
+  // Route to handle user logout
+  router.post('/logout', async (req, res) => {
+    console.log('Received a POST request to /api/auth/logout');
+    try {
+      res.status(200).json({ message: 'User logged out successfully' });
+    } catch (error) {
+      console.error('Error logging out user:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+  router.post('/change-password', async (req, res) => {
+    console.log('Received a POST request to /api/auth/change-password');
+    try {
+      res.status(200).json({ message: 'Password changed successfully' });
+    } catch (error) {
+      console.error('Error changing password:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+  // Route to fetch user data when logged in
+  router.get('/user', async (req, res) => {
+    console.log('Received a GET request to /api/auth/user');
+    try {
+      res.status(200).json({ message: 'User data fetched successfully' });
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  })
 
 module.exports = router;
