@@ -12,25 +12,25 @@ const Navbar = () => {
               <Link to="/" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/business" className="nav-link">Business</Link>
+              <Link to="business" className="nav-link">Business</Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/technology" className="nav-link">Technology</Link>
+              <Link to="tech" className="nav-link">Technology</Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/sports" className="nav-link">Sports</Link>
+              <Link to="/sports" className="nav-link">Sports</Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/health" className="nav-link">Health</Link>
+              <Link to="/health" className="nav-link">Health</Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/sports" className="nav-link">Sports</Link>
+              <Link to="/science" className="nav-link">Science</Link>
+            </li>
+            <li className='nav-item'>
+              <Link to="/entertainment" className="nav-link">Entertainment</Link>
             </li>
             <li className="nav-item">
-              <Link to="/category/sports" className="nav-link">Sports</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/category/sports" className="nav-link">Sports</Link>
+              <Link to="/saved" className="nav-link">Favourites</Link>
             </li>
             {/* Add more navigation links as needed */}
           </ul>
