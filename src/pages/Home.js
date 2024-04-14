@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import NewsItem from '../components/NewsItem';
-import { getNews } from '../utils/api'; // assuming you have a function to fetch news from your API
+import { getNews } from '../utils/api'; // Assuming you have a function to fetch news from your API
+import Loader from '../components/Loader'; // Example loader component
+import Error from '../components/Error'; // Example error component
+import './Home.css'; // Import custom styles for the home page
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const data = await getNews(); // fetch news from API
+        const data = await getNews(); // Fetch news from API
         setNews(data);
         setLoading(false);
       } catch (error) {
@@ -23,19 +28,25 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <Error message={error} />; 
   }
 
   return (
     <div>
-      <h2>Latest News</h2>
-      {news.map((article, index) => (
-        <NewsItem key={index} article={article} />
-      ))}
+      <Navbar />
+      <div className="home-container">
+        <h2>Latest News</h2>
+        <div className="news-grid">
+          {news.map((article, index) => (
+            <NewsItem key={index} article={article} />
+          ))}
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

@@ -1,5 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
+
+const navLinks = [
+  { to: '/', text: 'Home' },
+  { to: '/business', text: 'Business' },
+  { to: '/tech', text: 'Technology' },
+  { to: '/sports', text: 'Sports' },
+  { to: '/health', text: 'Health' },
+  { to: '/science', text: 'Science' },
+  { to: '/entertainment', text: 'Entertainment' },
+  { to: '/saved', text: 'Favorites' },
+  { to: '/loginPage', text: 'Login' },
+  // Add more navigation links as needed
+];
 
 const Navbar = () => {
   return (
@@ -8,31 +22,11 @@ const Navbar = () => {
         <Link to="/" className="navbar-brand">News Website</Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="business" className="nav-link">Business</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="tech" className="nav-link">Technology</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/sports" className="nav-link">Sports</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/health" className="nav-link">Health</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/science" className="nav-link">Science</Link>
-            </li>
-            <li className='nav-item'>
-              <Link to="/entertainment" className="nav-link">Entertainment</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/saved" className="nav-link">Favourites</Link>
-            </li>
-            {/* Add more navigation links as needed */}
+            {navLinks.map((link, index) => (
+              <li className="nav-item" key={index}>
+                <Link to={link.to} className="nav-link">{link.text}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

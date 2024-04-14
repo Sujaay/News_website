@@ -5,11 +5,15 @@ const NewsItem = ({ article }) => {
 
   return (
     <div className="news-item">
-      <img src={urlToImage} alt={title} />
-      <div>
-        <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
-        <p>{description}</p>
-      </div>
+      <a href={url} target="_blank" rel="noopener noreferrer" className="news-item-link">
+        <div className="news-item-image">
+          {urlToImage && <img src={urlToImage} alt={title} />}
+        </div>
+        <div className="news-item-content">
+          <h3 className="news-item-title">{title}</h3>
+          <p className="news-item-description">{description}</p>
+        </div>
+      </a>
     </div>
   );
 };
