@@ -1,32 +1,34 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getSportsNews } from '../utils/Sports/SportsNewsapi';
-import './Sports.css';
-import { getTrendingSportsNews } from '../utils/Sports/trendingSportsapi';
 import axios from 'axios';
+import { getTechNews } from '../utils/Tech/TechNewsapi';
+import { getTrendingTechNews } from '../utils/Tech/trendingTechapi';
+import './Technology.css';
 
-function SportsPage() {
-  const [sportsNews, setSportsNews] = useState([]);
+function TechnologyPage() {
+  const [techNews, setTechNews] = useState([]);
   const [trendingNews, setTrendingNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchSportsNews = async () => {
+    const fetchTechNews = async () => {
       try {
-        const data = await getSportsNews();
-        // Filter out articles from Google News and Cricbuzz
+        const data = await getTechNews();
+        // Filter out articles from certain sources or with specific criteria
         const filteredNews = data.filter(article => !isFromGoogleNews(article) && !isFromCricbuzz(article) && hasImage(article));
-        setSportsNews(filteredNews);
+        setTechNews(filteredNews);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching sports news:', error);
+        console.error('Error fetching technology news:', error);
         setLoading(false);
       }
     };
 
-    fetchSportsNews();
+    fetchTechNews();
   }, []);
+
+  const hasImage = (article) => {
+    return !!article.urlToImage; // Returns true if urlToImage is not null or undefined
+  };
 
   // Function to check if the article is from Google News
   const isFromGoogleNews = (article) => {
@@ -38,47 +40,35 @@ function SportsPage() {
     return article.source.name.toLowerCase().includes('cricbuzz');
   };
 
-  const hasImage = (article) => {
-    return !!article.urlToImage; // Returns true if urlToImage is not null or undefined
-  };
+  
 
-  // Fetch trending news
   useEffect(() => {
-    const fetchTrendingNews = async () => {
+    const fetchTrendingTechNews = async () => {
       try {
-        // Fetch trending news from API
-        const data = await getTrendingSportsNews(); // Replace getTrendingNews() with your actual API call function
-        const trendingData = data.slice(0, 10);
+        const data = await getTrendingTechNews(); // Replace with your API call to fetch trending tech news
+        const trendingData = data.slice(0, 10); // Adjust as needed
         setTrendingNews(trendingData);
-        
       } catch (error) {
-        console.error('Error fetching trending news:', error);
+        console.error('Error fetching trending technology news:', error);
       }
     };
 
-    fetchTrendingNews();
+    fetchTrendingTechNews();
   }, []);
-
-
-  const [saved, setSaved] = useState(false); // State to track if article is saved
 
   const handleSaveArticle = async (articleData) => {
     try {
-      // Send a POST request to save the article
       await axios.post('http://localhost:5000/api/articles/save', articleData);
-      setSaved(true); // Set saved state to true
+      // Handle successful save
     } catch (error) {
       console.error('Error saving article:', error);
     }
   };
 
- 
-
-
   return (
-    <div className="sports-page">
+    <div className="technology-page">
       <header>
-        <h1 >SPORTS NEWS</h1>
+        <h1 >TECHNOLOGY NEWS</h1>
         <nav>
           <ul>
             {/* Add more navigation links if needed */}
@@ -91,16 +81,16 @@ function SportsPage() {
         ) : (
           <div className="news-container">
             {/* Big News */}
-            {sportsNews.length > 0 && (
+            {techNews.length > 0 && (
               <div className="big-news">
                 <div className="article-container">
-                  <img src={sportsNews[0].urlToImage} alt={sportsNews[0].title} className="article-image" />
+                  <img src={techNews[0].urlToImage} alt={techNews[0].title} className="article-image" />
                   <div className="article-content">
                     <h2>
-                      <a href={sportsNews[0].url} target="_blank" rel="noopener noreferrer">{sportsNews[0].title}</a>
+                      <a href={techNews[0].url} target="_blank" rel="noopener noreferrer">{techNews[0].title}</a>
                     </h2>
-                    <p>{sportsNews[0].description}</p>
-                    <button onClick={() => handleSaveArticle(sportsNews[0])}>Save</button>
+                    <p>{techNews[0].description}</p>
+                    <button onClick={() => handleSaveArticle(techNews[0])}>Save</button>
                   </div>
                 </div>
               </div>
@@ -110,7 +100,7 @@ function SportsPage() {
             <div className='list-and-trending'>
             <div className="news-list-container">
               <h2>MORE NEWS STORIES</h2>
-              {sportsNews.slice(1).map((article, index) => (
+              {techNews.slice(1).map((article, index) => (
                 <div key={index} className="news-list">
                   <div className="article-container">
                     <img src={article.urlToImage} alt={article.title} className="article-image" />
@@ -155,4 +145,4 @@ function SportsPage() {
   );
 }
 
-export default SportsPage;
+export default TechnologyPage;
