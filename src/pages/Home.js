@@ -77,23 +77,24 @@ const Home = () => {
   // }
 
 
-return (
-  <div>
-    <Navbar />
-    <div className="home-container">
-      <h2>Latest News</h2>
-      <div className="news-grid">
-        {news.map((article, index) => (
-          <div className='news-article'>
-            <NewsItem article={article} />
-            <button onClick={() => handleSaveArticle(article)}>Save</button>
-          </div>
-        ))}
+  return (
+    <div>
+      <Navbar />
+      <div className="home-container">
+        <h2>Latest News</h2>
+        <div className="news-grid">
+          {news.map((article, index) => (
+            <div key={index} className='news-article'>
+              <NewsItem article={article} />
+              <button onClick={() => handleSaveArticle(article)}>Save</button>
+            </div>
+          ))}
+        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+  
 
 }
 export default Home;
