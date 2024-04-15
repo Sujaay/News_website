@@ -4,16 +4,26 @@ const User = require('../models/Viewer');
 
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
+
   try {
     // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'Email already exists' });
     }
+
+    // Validate name, email, and password
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: 'Name, email, and password are required' });
+    }
+
     // Create a new user
     const newUser = new User({ name, email, password });
     await newUser.save();
-    res.json({ message: 'Registration successful', user: newUser });
+
+    // Optionally, you can generate and return a JWT token for the newly registered user here
+
+    res.status(201).json({ message: 'Registration successful', user: newUser });
   } catch (error) {
     console.error('Registration error:', error);
     res.status(500).json({ error: 'Registration failed' });
