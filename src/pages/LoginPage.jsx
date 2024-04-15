@@ -1,8 +1,9 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,14 +25,23 @@ export default function Login() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "userRegister");
-        if (data.status == "ok") {
-          alert("login successful");
-          window.localStorage.setItem("token", data.data);
+        if (data.message === "Login successful") {
+          // Save token and login status to localStorage
+          window.localStorage.setItem("token", data.user.token);
           window.localStorage.setItem("loggedIn", true);
-
-          window.location.href = "./home";
+          // Update state to trigger re-render and redirection
+          setLoggedIn(true);
+        } else {
+          alert("Login failed");
         }
       });
+      
+  }
+
+  if (loggedIn) {
+    // Redirect to home page if logged in
+    window.location.href = "/home";
+    return null; // This prevents the rest of the component from rendering after redirection
   }
 
   return (

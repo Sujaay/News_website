@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Import Routes
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound'; 
 import SportsPage from './pages/Sports/Sports';
@@ -20,9 +20,14 @@ const App = () => {
     setLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    // Perform any logout actions, such as clearing localStorage, etc.
+    setLoggedIn(false);
+  };
+
   return (
     <Router>
-      <NavbarComponent loggedIn={loggedIn} />
+      <NavbarComponent loggedIn={loggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/home' element={<Home />} />
@@ -33,8 +38,14 @@ const App = () => {
         <Route path="/entertainment" element={<EntertainmentPage />} />
         <Route path="/business" element={<BusinessPage />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-        <Route path="/saved" element={loggedIn ? <SavedArticlesPage /> : <Navigate to="/login" />} />
+        <Route 
+          path="/login" 
+          element={<LoginPage onLogin={handleLogin} />} 
+        />
+        <Route 
+          path="/saved" 
+          element={loggedIn ? <SavedArticlesPage /> : <Navigate to="/login" />} 
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

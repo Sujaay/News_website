@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form'; // Add this import
-import Button from 'react-bootstrap/Button'; // Add this import
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function NavbarComponent({ loggedIn, onLogout }) {
-
   const handleLogout = () => {
     onLogout();
   };
@@ -20,7 +19,6 @@ function NavbarComponent({ loggedIn, onLogout }) {
     { to: '/health', text: 'Health' },
     { to: '/science', text: 'Science' },
     { to: '/entertainment', text: 'Entertainment' },
-    { to: '/login', text: loggedIn ? 'Logout' : 'Login' },
     { to: '/account-settings', text: 'Account Settings', hidden: !loggedIn },
     { to: '/saved', text: 'Favorites', hidden: !loggedIn },
   ];
@@ -35,6 +33,11 @@ function NavbarComponent({ loggedIn, onLogout }) {
             {navLinks.map(({ to, text, hidden }, index) => (
               !hidden && <Nav.Link key={index} as={Link} to={to}>{text}</Nav.Link>
             ))}
+            {loggedIn ? (
+              <Nav.Link onClick={handleLogout} as={Link} to="/">Logout</Nav.Link>
+            ) : (
+              <Nav.Link as={Link} to="/login">Login</Nav.Link>
+            )}
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -52,4 +55,3 @@ function NavbarComponent({ loggedIn, onLogout }) {
 }
 
 export default NavbarComponent;
-

@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
     const newUser = new User({ name, email, password });
     await newUser.save();
 
-    // Optionally, you can generate and return a JWT token for the newly registered user here
+    //generate and return a JWT token for the newly registered user here
 
     res.status(201).json({ message: 'Registration successful', user: newUser });
   } catch (error) {
