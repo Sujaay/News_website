@@ -14,7 +14,7 @@ const navLinks = [
   { to: '/science', text: 'Science' },
   { to: '/entertainment', text: 'Entertainment' },
   { to: '/saved', text: 'Favorites' },
-  { to: '/loginPage', text: 'Login' },
+  { to: '/login', text: 'Login' },
   // Add more navigation links as needed
 ];
 

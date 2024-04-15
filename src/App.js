@@ -10,7 +10,8 @@ import SciencePage from './pages/Science';
 import BusinessPage from './pages/Business';
 import HealthPage from './pages/Health';
 import EntertainmentPage from './pages/Entertainment';
-import LoginPage from './pages/LoginPage';
+// import LoginPage from './pages/LoginPage';
+import Login from './pages/LoginPage';
 import { useState } from 'react';
 import Register from './pages/Register';
 
@@ -38,7 +39,7 @@ const App = () => {
             <Route path="/register" element={< Register/>} />
     
 
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/saved" element={loggedIn ? <SavedArticlesPage /> : <Navigate to="/login" />} />
 
           </Routes>
