@@ -1,55 +1,49 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form'; // Add this import
-import Button from 'react-bootstrap/Button'; // Add this import
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
+import { useAuth } from "../store/auth";
 
-function NavbarComponent({ loggedIn, onLogout }) {
-
-  const handleLogout = () => {
-    onLogout();
-  };
-
-  const navLinks = [
-    { to: '/', text: 'Home' },
-    { to: '/business', text: 'Business' },
-    { to: '/tech', text: 'Technology' },
-    { to: '/sports', text: 'Sports' },
-    { to: '/health', text: 'Health' },
-    { to: '/science', text: 'Science' },
-    { to: '/entertainment', text: 'Entertainment' },
-    { to: '/login', text: loggedIn ? 'Logout' : 'Login' },
-    { to: '/account-settings', text: 'Account Settings', hidden: !loggedIn },
-    { to: '/saved', text: 'Favorites', hidden: !loggedIn },
-  ];
-
+export const Navbar = () => {
+  const { isLoggedIn } = useAuth();
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
-      <Container fluid>
-        <Navbar.Brand as={Link} to="/">DailyVista</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-            {navLinks.map(({ to, text, hidden }, index) => (
-              !hidden && <Nav.Link key={index} as={Link} to={to}>{text}</Nav.Link>
-            ))}
-          </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-light">Search</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <header>
+        <div className="container">
+          <div className="logo-brand">
+            <NavLink to="/">NewsWebsite</NavLink>
+          </div>
+
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/"> Home </NavLink>
+              </li>
+              <li>
+                <NavLink to="/sports"> Sports </NavLink>
+              </li>
+              <li>
+                <NavLink to="/business"> Business </NavLink>
+              </li>
+              <li>
+                <NavLink to="/technology"> Technology </NavLink>
+              </li>
+              {isLoggedIn ? (
+                <li>
+                  <NavLink to="/logout">Logout</NavLink>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <NavLink to="/register"> Register </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/login"> Login </NavLink>
+                  </li>
+                </>
+              )}
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </>
   );
-}
-
-export default NavbarComponent;
-
+};

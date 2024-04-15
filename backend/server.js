@@ -1,8 +1,8 @@
 // backend/server.js
-
-const express = require('express');
+const express = require("express");
+const cors = require("cors");
+const errorMiddleware = require("./middlewares/errorMiddleware");
 const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const articleRoutes = require('./routes/articles');
 const authRoutes = require('./routes/auth'); // Import auth routes
@@ -17,10 +17,11 @@ app.use(bodyParser.json());
 app.use('/api/articles', articleRoutes);
 app.use('/api/auth', authRoutes); // Use auth routes
 
-// Connect to MongoDB
+app.use(errorMiddleware);
 
-// const MONGODB_URI = 'mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'; // Change this to your MongoDB connection string
-const MONGODB_URI='mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'
+// Connect to MongoDB
+const MONGODB_URI = "mongodb+srv://SujayKumar:BZC5oCZ1pOqmodAX@newsdatabase.1r1khtv.mongodb.net/?retryWrites=true&w=majority&appName=NewsDatabase";
+// const MONGODB_URI='mongodb+srv://tanaya0222:User123@cluster0.maw7mev.mongodb.net/'
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
