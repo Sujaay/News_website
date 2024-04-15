@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Article = require('../models/Article');
+const Article = require('../models/Articles');
 
 // Route to save an article
 router.post('/save', async (req, res) => {

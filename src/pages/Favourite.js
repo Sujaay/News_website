@@ -45,12 +45,12 @@ function SavedArticlesPage() {
     <div className='Saved-news'>
       <Navbar/>
       <h1>Saved Articles</h1>
-      <div className='container'>
+      <div className='containers'>
         {savedArticles.map((article) => (
           <div key={article._id} className= 'news-articles'>
-            {article.urlToImage && <img src={article.urlToImage} alt={article.title} className="article-image" />}
+            {article.urlToImage && <img src={article.urlToImage} alt={article.title} className="articles-image" />}
 
-            {/* <img src={article.urlToImage} alt={article.title} className="articles-image" /> */}
+           
               <div className="articles-content">
               <h2>
               <a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a>

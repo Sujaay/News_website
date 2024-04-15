@@ -6,49 +6,94 @@ import Error from '../components/Error'; // Example error component
 import './Home.css'; // Import custom styles for the home page
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import axios from 'axios';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [news, setNews] = useState([]);
+  
 
   useEffect(() => {
-    const fetchNews = async () => {
+    const fetchHomeNews = async () => {
       try {
-        const data = await getNews(); // Fetch news from API
-        setNews(data);
+        const data = await getNews(); 
+        const filteredNews = data.filter(article => !isFromGoogleNews(article) && !isFromCricbuzz(article) && hasImage(article));
+        setNews(filteredNews);
         setLoading(false);
       } catch (error) {
-        setError(error.message);
+        console.error('Error fetching science news:', error);
         setLoading(false);
       }
     };
 
-    fetchNews();
+    fetchHomeNews();
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
+  const hasImage = (article) => {
+    return !!article.urlToImage; // Returns true if urlToImage is not null or undefined
+  };
+  
+  const isFromGoogleNews = (article) => {
+    return article.source.name.toLowerCase().includes('google');
+  };
 
-  if (error) {
-    return <Error message={error} />; 
-  }
+  // Function to check if the article is from Cricbuzz
+  const isFromCricbuzz = (article) => {
+    return article.source.name.toLowerCase().includes('cricbuzz');
+  };
 
-  return (
-    <div>
-      <Navbar />
-      <div className="home-container">
-        <h2>Latest News</h2>
-        <div className="news-grid">
-          {news.map((article, index) => (
-            <NewsItem key={index} article={article} />
-          ))}
-        </div>
+  
+
+  const handleSaveArticle = async (articleData) => {
+    try {
+      await axios.post('http://localhost:5000/api/articles/save', articleData);
+      // Handle successful save
+    } catch (error) {
+      console.error('Error saving article:', error);
+    }
+  };
+  // useEffect(() => {
+  //   const fetchNews = async () => {
+  //     try {
+  //       const data = await getNews(); // Fetch news from API
+  //       setNews(data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setError(error.message);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchNews();
+  // }, []);
+
+  // if (loading) {
+  //   return <Loader />;
+  // }
+
+  // if (error) {
+  //   return <Error message={error} />; 
+  // }
+
+
+return (
+  <div>
+    <Navbar />
+    <div className="home-container">
+      <h2>Latest News</h2>
+      <div className="news-grid">
+        {news.map((article, index) => (
+          <div className='news-article'>
+            <NewsItem article={article} />
+            <button onClick={() => handleSaveArticle(article)}>Save</button>
+          </div>
+        ))}
       </div>
-      <Footer />
     </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
+}
 export default Home;
