@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes
 import Home from './pages/Home';
-// import Category from './pages/Category'; // Make sure this import is correct
-import NotFound from './pages/NotFound'; // Make sure this import is correct
+import NotFound from './pages/NotFound'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SportsPage from './pages/Sports';
 import SavedArticlesPage from './pages/Favourite';
