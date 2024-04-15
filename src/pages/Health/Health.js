@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { getHealthNews } from '../utils/Health/HealthNewsapi';
-import { getTrendingHealthNews } from '../utils/Health/trendingHealthapi';
+import { getHealthNews } from '../../utils/Health/HealthNewsapi';
+import { getTrendingHealthNews } from '../../utils/Health/trendingHealthapi';
 import './Health.css';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
 
 function HealthPage() {
   const [data, setData] = useState([]);
@@ -50,7 +50,6 @@ function HealthPage() {
 
   return (
     <div className="health-page">
-      <Navbar />
       <header>
         <h1>HEALTH NEWS</h1>
         <nav>
@@ -118,7 +117,6 @@ function HealthPage() {
           </div>
         )}
       </main>
-      <Footer />
     </div>
   );
 }

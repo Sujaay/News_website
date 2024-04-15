@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getSportsNews } from '../utils/Sports/SportsNewsapi';
+import { getSportsNews } from '../../utils/Sports/SportsNewsapi';
 import './Sports.css';
-import { getTrendingSportsNews } from '../utils/Sports/trendingSportsapi';
+import { getTrendingSportsNews } from '../../utils/Sports/trendingSportsapi';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 function SportsPage() {
   const [sportsNews, setSportsNews] = useState([]);
@@ -78,7 +78,6 @@ function SportsPage() {
 
   return (
     <div className="sports-page">
-      <Navbar/>
       <header>
         <h1 >SPORTS NEWS</h1>
         <nav>
@@ -150,9 +149,6 @@ function SportsPage() {
           </div>
         )}
       </main>
-      <footer>
-        {/* Footer content */}
-      </footer>
     </div>
   );
 }

@@ -72,3 +72,97 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+News_website
+├─ .gitignore
+├─ backend
+│  ├─ config
+│  ├─ controllers
+│  │  └─ authContollers.js
+│  ├─ models
+│  │  ├─ Articles.js
+│  │  └─ Viewer.js
+│  ├─ routes
+│  │  ├─ articles.js
+│  │  └─ auth.js
+│  └─ server.js
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ favicon.ico
+│  ├─ index.html
+│  ├─ logo192.png
+│  ├─ logo512.png
+│  ├─ manifest.json
+│  └─ robots.txt
+├─ README.md
+└─ src
+   ├─ App.css
+   ├─ App.js
+   ├─ components
+   │  ├─ Error
+   │  │  └─ Error.js
+   │  ├─ Footer
+   │  │  ├─ Footer.css
+   │  │  └─ Footer.jsx
+   │  ├─ Loader.css
+   │  ├─ Loader.js
+   │  ├─ Navbar
+   │  │  ├─ Navbar.css
+   │  │  └─ Navbar.jsx
+   │  └─ NewsItem.js
+   ├─ index.css
+   ├─ index.js
+   ├─ logo.svg
+   ├─ pages
+   │  ├─ Business
+   │  │  ├─ Business.css
+   │  │  └─ Business.js
+   │  ├─ Entertainment
+   │  │  ├─ Entertainment.css
+   │  │  └─ Entertainment.js
+   │  ├─ Favourite.css
+   │  ├─ Favourite.js
+   │  ├─ Health
+   │  │  ├─ Health.css
+   │  │  └─ Health.js
+   │  ├─ Home
+   │  │  ├─ Home.css
+   │  │  └─ Home.js
+   │  ├─ LoginPage.css
+   │  ├─ LoginPage.jsx
+   │  ├─ NotFound.js
+   │  ├─ Register.js
+   │  ├─ Science
+   │  │  ├─ Science.css
+   │  │  └─ Science.js
+   │  ├─ Sports
+   │  │  ├─ Sports.css
+   │  │  └─ Sports.js
+   │  └─ Technology
+   │     ├─ Technology.css
+   │     └─ Technology.js
+   ├─ reportWebVitals.js
+   └─ utils
+      ├─ api.js
+      ├─ Business
+      │  ├─ BusinessNewsapi.js
+      │  └─ trendingBusinessapi.js
+      ├─ Entertainment
+      │  ├─ EntertainmentNewsapi.js
+      │  └─ trendingEntertainmentapi.js
+      ├─ Health
+      │  ├─ HealthNewsapi.js
+      │  └─ trendingHealthapi.js
+      ├─ Science
+      │  ├─ ScienceNewsapi.js
+      │  └─ trendingScienceapi.js
+      ├─ Sports
+      │  ├─ SportsNewsapi.js
+      │  └─ trendingSportsapi.js
+      └─ Tech
+         ├─ TechNewsapi.js
+         └─ trendingTechapi.js
+
+```

@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { getBusinessNews } from '../utils/Business/BusinessNewsapi'; 
-import { getTrendingBusinessNews } from '../utils/Business/trendingBusinessapi'; 
-import './Business.css'; 
-import Navbar from '../components/Navbar';
-import { getBusinessNews } from './../utils/Business/BusinessNewsapi';
+import { getTrendingScienceNews } from '../../utils/Science/trendingScienceapi';
+import { getScienceNews } from '../../utils/Science/ScienceNewsapi';
+import './Science.css'; // Assuming you have a CSS file for styling
+import Navbar from '../../components/Navbar/Navbar';
 
-function BusinessPage() {
-  const [businessNews, setBusinessNews] = useState([]);
+function SciencePage() {
+  const [scienceNews, setScienceNews] = useState([]);
   const [trendingNews, setTrendingNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBusinessNews = async () => {
+    const fetchScienceNews = async () => {
       try {
-        const data = await getBusinessNews();
+        const data = await getScienceNews();
         // Filter out articles from certain sources or with specific criteria
         const filteredNews = data.filter(article => !isFromGoogleNews(article) && !isFromCricbuzz(article) && hasImage(article));
-        setBusinessNews(filteredNews);
+        setScienceNews(filteredNews);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching business news:', error);
+        console.error('Error fetching science news:', error);
         setLoading(false);
       }
     };
 
-    fetchBusinessNews();
+    fetchScienceNews();
   }, []);
 
   const hasImage = (article) => {
     return !!article.urlToImage; // Returns true if urlToImage is not null or undefined
   };
   
-
   const isFromGoogleNews = (article) => {
     return article.source.name.toLowerCase().includes('google');
   };
@@ -42,19 +40,20 @@ function BusinessPage() {
     return article.source.name.toLowerCase().includes('cricbuzz');
   };
 
+  
 
   useEffect(() => {
-    const fetchTrendingBusinessNews = async () => {
+    const fetchTrendingScienceNews = async () => {
       try {
-        const data = await getTrendingBusinessNews(); // Replace with your API call to fetch trending business news
+        const data = await getTrendingScienceNews(); // Replace with your API call to fetch trending science news
         const trendingData = data.slice(0, 10); // Adjust as needed
         setTrendingNews(trendingData);
       } catch (error) {
-        console.error('Error fetching trending business news:', error);
+        console.error('Error fetching trending science news:', error);
       }
     };
 
-    fetchTrendingBusinessNews();
+    fetchTrendingScienceNews();
   }, []);
 
   const handleSaveArticle = async (articleData) => {
@@ -67,11 +66,14 @@ function BusinessPage() {
   };
 
   return (
-    
-    <div className="business-page">
-    <Navbar/>
+    <div className="science-page">
     <header>
-      <h1 >BUSINESS NEWS</h1>
+      <h1 >SCIENCE NEWS</h1>
+      <nav>
+        <ul>
+          {/* Add more navigation links if needed */}
+        </ul>
+      </nav>
     </header>
     <main>
       {loading ? (
@@ -79,16 +81,16 @@ function BusinessPage() {
       ) : (
         <div className="news-container">
           {/* Big News */}
-          {businessNews.length > 0 && (
+          {scienceNews.length > 0 && (
             <div className="big-news">
               <div className="article-container">
-                <img src={businessNews[0].urlToImage} alt={businessNews[0].title} className="article-image" />
+                <img src={scienceNews[0].urlToImage} alt={scienceNews[0].title} className="article-image" />
                 <div className="article-content">
                   <h2>
-                    <a href={businessNews[0].url} target="_blank" rel="noopener noreferrer">{businessNews[0].title}</a>
+                    <a href={scienceNews[0].url} target="_blank" rel="noopener noreferrer">{scienceNews[0].title}</a>
                   </h2>
-                  <p>{businessNews[0].description}</p>
-                  <button onClick={() => handleSaveArticle(businessNews[0])}>Save</button>
+                  <p>{scienceNews[0].description}</p>
+                  <button onClick={() => handleSaveArticle(scienceNews[0])}>Save</button>
                 </div>
               </div>
             </div>
@@ -98,7 +100,7 @@ function BusinessPage() {
           <div className='list-and-trending'>
           <div className="news-list-container">
             <h2>MORE NEWS STORIES</h2>
-            {businessNews.slice(1).map((article, index) => (
+            {scienceNews.slice(1).map((article, index) => (
               <div key={index} className="news-list">
                 <div className="article-container">
                   <img src={article.urlToImage} alt={article.title} className="article-image" />
@@ -136,11 +138,8 @@ function BusinessPage() {
         </div>
       )}
     </main>
-    <footer>
-      {/* Footer content */}
-    </footer>
   </div>
 );
 }
 
-export default BusinessPage;
+export default SciencePage;
