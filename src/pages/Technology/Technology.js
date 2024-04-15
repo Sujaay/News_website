@@ -68,7 +68,6 @@ function TechnologyPage() {
 
   return (
     <div className="technology-page">
-      <Navbar/>
       <header>
         <h1 >TECHNOLOGY NEWS</h1>
         <nav>
@@ -140,9 +139,6 @@ function TechnologyPage() {
           </div>
         )}
       </main>
-      <footer>
-        {/* Footer content */}
-      </footer>
     </div>
   );
 }

@@ -67,7 +67,6 @@ function SciencePage() {
 
   return (
     <div className="science-page">
-      <Navbar/>
     <header>
       <h1 >SCIENCE NEWS</h1>
       <nav>
@@ -139,9 +138,6 @@ function SciencePage() {
         </div>
       )}
     </main>
-    <footer>
-      {/* Footer content */}
-    </footer>
   </div>
 );
 }

@@ -66,7 +66,6 @@ function EntertainmentPage() {
 
   return (
     <div className="entertainment-page">
-      <Navbar/>
       <header>
         <h1 >ENTERTAINMENT NEWS</h1>
         <nav>
@@ -138,7 +137,6 @@ function EntertainmentPage() {
           </div>
         )}
       </main>
-      <Footer />
     </div>
   );
 }

@@ -69,7 +69,6 @@ function BusinessPage() {
   return (
     
     <div className="business-page">
-    <Navbar/>
     <header>
       <h1 >BUSINESS NEWS</h1>
     </header>
@@ -136,9 +135,6 @@ function BusinessPage() {
         </div>
       )}
     </main>
-    <footer>
-      {/* Footer content */}
-    </footer>
   </div>
 );
 }

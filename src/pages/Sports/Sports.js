@@ -78,7 +78,6 @@ function SportsPage() {
 
   return (
     <div className="sports-page">
-      <Navbar/>
       <header>
         <h1 >SPORTS NEWS</h1>
         <nav>
@@ -150,9 +149,6 @@ function SportsPage() {
           </div>
         )}
       </main>
-      <footer>
-        {/* Footer content */}
-      </footer>
     </div>
   );
 }

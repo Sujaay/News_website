@@ -50,7 +50,6 @@ function HealthPage() {
 
   return (
     <div className="health-page">
-      <Navbar />
       <header>
         <h1>HEALTH NEWS</h1>
         <nav>
@@ -118,7 +117,6 @@ function HealthPage() {
           </div>
         )}
       </main>
-      <Footer />
     </div>
   );
 }

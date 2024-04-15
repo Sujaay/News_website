@@ -56,7 +56,6 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="home-container">
         <h2>Latest News</h2>
         <div className="news-grid">
