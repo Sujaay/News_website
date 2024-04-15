@@ -72,11 +72,6 @@ function BusinessPage() {
     <Navbar/>
     <header>
       <h1 >BUSINESS NEWS</h1>
-      <nav>
-        <ul>
-          {/* Add more navigation links if needed */}
-        </ul>
-      </nav>
     </header>
     <main>
       {loading ? (

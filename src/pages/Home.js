@@ -86,7 +86,7 @@ const Home = () => {
           {news.map((article, index) => (
             <div key={index} className='news-article'>
               <NewsItem article={article} />
-              <button onClick={() => handleSaveArticle(article)}>Save</button>
+              <button className='save-button' onClick={() => handleSaveArticle(article)}>Save</button>
             </div>
           ))}
         </div>

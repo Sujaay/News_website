@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Import Routes
 import Home from './pages/Home';
-// import Category from './pages/Category'; // Make sure this import is correct
-import NotFound from './pages/NotFound'; // Make sure this import is correct
+import NotFound from './pages/NotFound'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SportsPage from './pages/Sports';
 import SavedArticlesPage from './pages/Favourite';
@@ -24,8 +23,6 @@ const App = () => {
 
   return (
     <Router>
-      <div className="App">
-        <div className="container">
             <Routes> {/* Use Routes instead of Switch */}
             <Route path="/" element={<Home />} />
             <Route path='/home' element={<Home />} />
@@ -45,8 +42,6 @@ const App = () => {
         <Route path="/saved" element={loggedIn ? <SavedArticlesPage /> : <Navigate to="/login" />} />
 
           </Routes>
-        </div>
-      </div>
     </Router>
   );
 };

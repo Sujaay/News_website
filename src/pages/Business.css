@@ -1,10 +1,4 @@
-body {
-    background-color: #c4ddf5;
-    margin: 0; /* Reset default margin */
-    padding: 0; /* Reset default padding */
-  }
-  
-  
+/* src\pages\Business.css */  
   .business-page {
       max-width: 1200px;
       margin: 0 auto;
