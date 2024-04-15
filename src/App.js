@@ -15,8 +15,6 @@ import LoginPage from './pages/LoginPage';
 const App = () => {
   return (
     <Router>
-      <div className="App">
-        <div className="container">
             <Routes> {/* Use Routes instead of Switch */}
             <Route path="/" element={<Home />} />
             <Route path='/home' element={<Home />} />
@@ -29,10 +27,7 @@ const App = () => {
             <Route path="/saved" element={<SavedArticlesPage />} />
             <Route path='/loginPage' element={<LoginPage />} />
             <Route path="*" element={<NotFound />} />
-
           </Routes>
-        </div>
-      </div>
     </Router>
   );
 };
