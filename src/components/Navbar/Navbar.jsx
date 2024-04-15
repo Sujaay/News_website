@@ -6,11 +6,10 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form'; // Add this import
 import Button from 'react-bootstrap/Button'; // Add this import
 
-function NavbarComponent() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function NavbarComponent({ loggedIn, onLogout }) {
 
   const handleLogout = () => {
-    setLoggedIn(false);
+    onLogout();
   };
 
   const navLinks = [
