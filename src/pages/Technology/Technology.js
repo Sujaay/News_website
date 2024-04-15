@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { getTechNews } from '../utils/Tech/TechNewsapi';
-import { getTrendingTechNews } from '../utils/Tech/trendingTechapi';
+import { getTechNews } from '../../utils/Tech/TechNewsapi';
+import { getTrendingTechNews } from '../../utils/Tech/trendingTechapi';
 import './Technology.css';
-import Navbar from './../components/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 function TechnologyPage() {
   const [techNews, setTechNews] = useState([]);

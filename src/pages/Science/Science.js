@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { getTrendingScienceNews } from '../utils/Science/trendingScienceapi';
-import { getScienceNews } from '../utils/Science/ScienceNewsapi';
+import { getTrendingScienceNews } from '../../utils/Science/trendingScienceapi';
+import { getScienceNews } from '../../utils/Science/ScienceNewsapi';
 import './Science.css'; // Assuming you have a CSS file for styling
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 function SciencePage() {
   const [scienceNews, setScienceNews] = useState([]);

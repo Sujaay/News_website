@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { getBusinessNews } from '../utils/Business/BusinessNewsapi'; 
-import { getTrendingBusinessNews } from '../utils/Business/trendingBusinessapi'; 
+import { getTrendingBusinessNews } from '../../utils/Business/trendingBusinessapi'; 
 import './Business.css'; 
-import Navbar from '../components/Navbar';
-import { getBusinessNews } from './../utils/Business/BusinessNewsapi';
+import Navbar from '../../components/Navbar/Navbar';
+import { getBusinessNews } from '../../utils/Business/BusinessNewsapi';
 
 function BusinessPage() {
   const [businessNews, setBusinessNews] = useState([]);
